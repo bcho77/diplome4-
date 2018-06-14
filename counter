@@ -1,0 +1,43 @@
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        if (txtrech.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "SVP complete le champ de recherche");
+        } else {
+            if (comrech.getSelectedItem().equals("code_produit")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "code_produit LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+            } else if (comrech.getSelectedItem().equals("reference")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "reference LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+            } else if (comrech.getSelectedItem().equals("deseignation")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "deseignation LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+                } else if (comrech.getSelectedItem().equals("rangement")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "rangement LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+            } else if (comrech.getSelectedItem().equals("fournisseur")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "fournisseur LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+                } else if (comrech.getSelectedItem().equals("remise")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "remise LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+            } else if (comrech.getSelectedItem().equals("prix")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "prix LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+                } else if (comrech.getSelectedItem().equals("stock")) {
+                String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+                rs = db.fcSelectCommand(colon, "produit", "stock LIKE '" + txtrech.getText() + "' ");
+                tbl_res.setModel(new ResultSetTableMode(rs));
+            
+            
+            
+                
+                }
+            }
+    } 
