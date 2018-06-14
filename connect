@@ -1,0 +1,31 @@
+ublic ResultSet querySelectAll(String nomTable) {
+
+        connexionDatabase();
+        SQL = "SELECT * FROM " + nomTable;
+        System.out.println(SQL);
+        return this.exécutionQuery(SQL);
+
+    }
+
+//Overload fungsi untuk eksekusi query select semua kolom dengan where
+    public ResultSet querySelectAll(String nomTable, String état) {
+
+        connexionDatabase();
+        SQL = "SELECT * FROM " + nomTable + " WHERE " + état;
+        return this.exécutionQuery(SQL);
+
+    }
+
+//Fungsi untuk eksekusi query select dengan kolom spesifik
+    public ResultSet querySelect(String[] nomColonne, String nomTable) {
+
+        connexionDatabase();
+        int i;
+        SQL = "SELECT ";
+
+        for (i = 0; i <= nomColonne.length - 1; i++) {
+            SQL += nomColonne[i];
+            if (i < nomColonne.length - 1) {
+                SQL += ",";
+            }
+        }
