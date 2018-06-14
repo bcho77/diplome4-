@@ -1,0 +1,31 @@
+
+    /**
+     * Creates new form Cachie
+     */
+    ResultSet rs;
+    Db_connect db;
+    int old, dec, now;
+    public Cachie() {
+        db = new Db_connect(new Paramet().HOST_DB, new Paramet().USERNAME_DB, new Paramet().PASSWORD_DB, new Paramet().IPHOST, new Paramet().PORT);
+        
+        initComponents();
+        table();
+        jam();
+    }
+      public void table() {
+        String colon[] = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+        rs = db.querySelect(colon, "produit");
+        tbl_res.setModel(new ResultSetTableMode(rs));
+    }
+
+    public void importer() {
+        String colon[] = {"num_facture","code_produit","reference","prix_vente","stock_sortie","subtotal"};
+        rs = db.fcSelectCommand(colon, "vente", "num_facture='" + jTextField1.getText() + "'");
+        tbl_ven.setModel(new ResultSetTableMode(rs));
+    }
+     public void jam() {
+        Date s = new Date();
+        SimpleDateFormat tgl = new SimpleDateFormat("EEEE-dd-MMM-yyyy");
+        SimpleDateFormat jam = new SimpleDateFormat("HH:mm");
+        lab15.setText(jam.format(s));
+        lab14.setText(tgl.format(s));}
