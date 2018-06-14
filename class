@@ -1,0 +1,15 @@
+ if (txtid.getText().equals("") || txtref.getText().equals("") || txtdes.getText().equals("")
+                || txtfou.getText().equals("") || txtran.getText().equals("") || txtrem.getText().equals("")
+                || txtpri.getText().equals("") || txtsto.getText().equals("")
+                ) {
+            JOptionPane.showMessageDialog(this, "SVP entrer les informations complete");
+        } else {
+                  String[] colon = {"code_produit","reference","deseignation","rangement","fournisseur","remise","prix","stock"};
+              String[] inf = {txtid.getText(), txtref.getText(), txtdes.getText(),txtran.getText(),txtfou.getText()
+            ,txtrem.getText(),txtpri.getText(),txtsto.getText()};
+            String id = String.valueOf(tbl_prod.getValueAt(tbl_prod.getSelectedRow(), 0));
+            System.out.println(db.queryUpdate("produit", colon, inf, "id='" + id + "'"));
+            table();
+            actualiser();
+        }
+    }       
