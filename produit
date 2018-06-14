@@ -1,0 +1,56 @@
+
+
+   public Connection closeconnexion() {
+
+        try {
+            connection.close();
+        } catch (Exception e) {System.err.println(e);//
+        }
+        return connection;
+    }
+
+    public ResultSet exécutionQuery(String sql) {
+        connexionDatabase();
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+            System.out.println(sql);
+        } catch (SQLException ex) {System.err.println(ex);//
+        }
+        return resultSet;
+    }
+
+    public String exécutionUpdate(String sql) {
+        connexionDatabase();
+        String result = "";
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(sql);
+            result = sql;
+
+        } catch (SQLException ex) {
+            result = ex.toString();
+        }
+        return result;
+
+    }
+
+//Fungsi untuk eksekusi query select semua kolom
+    public ResultSet querySelectAll(String nomTable) {
+
+        connexionDatabase();
+        SQL = "SELECT * FROM " + nomTable;
+        System.out.println(SQL);
+        return this.exécutionQuery(SQL);
+
+    }
+
+//Overload fungsi untuk eksekusi query select semua kolom dengan where
+    public ResultSet querySelectAll(String nomTable, String état) {
+
+        connexionDatabase();
+        SQL = "SELECT * FROM " + nomTable + " WHERE " + état;
+        return this.exécutionQuery(SQL);
+
+    }
